@@ -1,3 +1,8 @@
 %h1 New question
-
-= render 'form'
+= form_tag(controller: 'questions', action: 'create', method: 'post') do |f|
+  .row
+    .col-md-6
+      .form-group
+        %label{:for => ""} Content
+        = text_field_tag 'question[content]', nil, class: 'form-control'
+        = submit_tag 'OK'

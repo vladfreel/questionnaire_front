@@ -1,0 +1,9 @@
+%h1 New answer
+= form_tag(controller: 'answers', action: 'create', method: 'post') do |f|
+  .row
+    .col-md-6
+      .form-group
+        %label{:for => ""} Content
+        = text_field_tag 'answer[content]', nil, class: 'form-control'
+        = hidden_field_tag 'answer[question_id]', params['format']
+        = submit_tag 'OK'

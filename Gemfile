@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'rest-client'
+gem 'rest-client', '~> 2.0'
 gem 'haml-rails', '~> 1.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'

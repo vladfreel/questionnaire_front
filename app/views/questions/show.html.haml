@@ -1,5 +1,11 @@
 .container
   = @question['content']
+  = button_to '', {:controller => :questions, :action => 'destroy', :id => @question['id'] }, :method => :delete do
+    %i.fa.fa-trash
+  = link_to 'edit', edit_question_path(@question['id'])
   .answers
+    = link_to 'new answer', new_answer_path(@question['id'])
     - @question['answers'].each do |answer|
       = answer['content']
+      = button_to '', {:controller => :answers, :action => 'destroy', :id => answer['id'] }, :method => :delete do
+        %i.fa.fa-trash
