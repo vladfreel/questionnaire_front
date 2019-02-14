@@ -6,8 +6,9 @@
   .questions
     - if @questions.present?
       - @questions.each do |question|
-        .question
-          = question['content']
-          .answers
-            - question['answers'].each do |answer|
-              = answer['content']
+        = link_to question_path(question['id']) do
+          .question
+            = question['content']
+            .answers
+              - question['answers'].each do |answer|
+                = answer['content']
