@@ -1,3 +1,18 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.questions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.question{
+  border-radius: 72px 72px 72px 72px;
+  -moz-border-radius: 72px 72px 72px 72px;
+  -webkit-border-radius: 72px 72px 72px 72px;
+  border: 1px solid #000000;
+  padding: 10px 10px 10px 10px;
+}
+.answers{
+  padding-top: 10px;
+}
