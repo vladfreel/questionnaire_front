@@ -1,0 +1,9 @@
+%h1 Edit answer
+= form_tag '/update_answer',method: :get do
+  .row
+    .col-md-6
+      .form-group
+        %label{:for => ""} Content
+        = text_field_tag 'answer[content]', @answer['content'], class: 'form-control'
+        = hidden_field_tag 'id', @answer['id']
+        = submit_tag 'OK'

@@ -10,9 +10,19 @@ class AnswersController < ApplicationController
     redirect_to question_path(parsed_question['id'])
   end
 
-  def update
-    RestClient.put("http://#{set_host}/api/v1/answers/#{params[:id]}.json", { accept: :json }).body
-    redirect_to request.referrer
+  def edit
+    answer = RestClient.get("http://#{set_host}/api/v1/answers/#{params[:id]}.json", { accept: :json }).body
+    @answer = JSON.parse(answer)
+  end
+
+  def update_answer
+    question = RestClient.put "http://#{set_host}/api/v1/answers/#{params[:id]}.json",
+                              { answer: {content: answer_params['content']} },
+                              {content_type: :json,
+                               accept: :json}
+    @question = JSON.parse(question)
+
+    redirect_to question_path(@question['id'])
   end
 
   def destroy

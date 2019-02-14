@@ -1,11 +1,22 @@
 .container
-  = @question['content']
-  = button_to '', {:controller => :questions, :action => 'destroy', :id => @question['id'] }, :method => :delete do
+  = link_to 'Main', questions_path
+  %br
+  %br
+  %h1
+    = @question['content']
+  = link_to question_path(@question['id']),data: {:confirm => 'Are you sure?'}, :method => :delete do
     %i.fa.fa-trash
-  = link_to 'edit', edit_question_path(@question['id'])
+  = link_to edit_question_path(@question['id']) do
+    %i.fa.fa-edit
   .answers
     = link_to 'new answer', new_answer_path(@question['id'])
+    %br
     - @question['answers'].each do |answer|
-      = answer['content']
-      = button_to '', {:controller => :answers, :action => 'destroy', :id => answer['id'] }, :method => :delete do
+      %br
+      %br
+      %h2
+        = answer['content']
+      = link_to answer_path(answer['id']),data: {:confirm => 'Are you sure?'}, :method => :delete do
         %i.fa.fa-trash
+      = link_to edit_answer_path(answer['id']) do
+        %i.fa.fa-edit

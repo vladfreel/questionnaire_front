@@ -19,14 +19,12 @@ class QuestionsController < ApplicationController
 
   def edit;end
 
-  def update
-    p '*'*100
-    question = RestClient.put "http://#{set_host}/api/v1/questions/#{params[:id]}.json",
-                              { question: {content: question_params['content']} },
-                              {content_type: :json,
-                               accept: :json}
-    @question = JSON.parse(question)
-    redirect_to question_path(question['id'])
+  def update_question
+    RestClient.put "http://#{set_host}/api/v1/questions/#{params[:id]}.json",
+                   { question: {content: question_params['content']} },
+                   {content_type: :json,
+                    accept: :json}
+    redirect_to question_path(params[:id])
   end
 
   def destroy

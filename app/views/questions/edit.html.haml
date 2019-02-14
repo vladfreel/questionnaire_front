@@ -1,9 +1,9 @@
 %h1 Edit question
-
-%form{"accept-charset" => "UTF-8", :action => "/questions/2", :method => "put"}
+= form_tag '/update_question',method: :get do
   .row
     .col-md-6
       .form-group
         %label{:for => ""} Content
         = text_field_tag 'question[content]', @question['content'], class: 'form-control'
+        = hidden_field_tag 'id', @question['id']
         = submit_tag 'OK'
